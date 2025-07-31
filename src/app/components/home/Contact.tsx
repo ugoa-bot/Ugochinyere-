@@ -201,7 +201,7 @@ export default function Contact() {
                   </p>
                   <div className="flex items-center justify-center mt-[28px] mb-[56px]">
                     {/* <Link href="https://koalendar.com/e/meet-with-ewherhe-akpesiri"> */}
-                    <Link href="https://selfany.com/projectmanagementclaritycall">
+                    <Link href="https://calendly.com/ugochinyere/discovery-call?month=2025-06">
                       <Button
                         type="submit"
                         icon={null}
@@ -222,7 +222,7 @@ export default function Contact() {
                     </p>
                   </div>
                   <div className="text-center mt-4">
-                   <Link href="https://koalendar.com/e/meet-with-ewherhe-akpesiri" className="">
+                   <Link href="https://calendly.com/ugochinyere/discovery-call" className="">
                       <p className="text-[13px] text-[#00000099] underline hover:text-[#FA7892] transition duration-200">
                         Or book a free consultation call
                       </p>

@@ -15,7 +15,7 @@ export default function TestimonialCard({
   testimonial: Testimonial;
 }) {
   return (
-    <div className="max-w-full w-[711px] mx-auto h-[236px] rounded-[5px] !bg-[#3B3B3B] text-white relative overflow-hidden">
+    <div className="max-w-full w-[711px] mx-auto  rounded-[5px] !bg-[#3B3B3B] text-white relative overflow-hidden">
       <div className="absolute -bottom-2 right-20 text-[40px] text-white">
         <div className="w-[58px] h-[135px]">
           <Image

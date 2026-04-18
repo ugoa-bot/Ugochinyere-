@@ -20,6 +20,12 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "More Than an Assistant — A Strategic Partner.",
   description: "Making Your Vision Smoother, Smarter, and Stress-Free.",
+
+   icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

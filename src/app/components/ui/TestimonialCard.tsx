@@ -41,10 +41,12 @@ export default function TestimonialCard({
         <div className="flex items-center justify-between ">
           <div className="flex items-center gap-3">
             <div className="w-[40px] h-[40px] bg-white rounded-full">
-              <img
+              <Image
                 src={testimonial.image}
                 alt={testimonial.Name}
                 className="w-[40px] h-[40px] rounded-full object-cover"
+                width={500}
+                height={500}
               />
             </div>
             <div>

@@ -67,7 +67,7 @@ export default function Portfolio() {
             : projects.map((project, index) => (
                 <Link
                   key={project._id}
-                  href={`/project/${project.slug.current}`}
+                  href={`/project/${project?.slug?.current ?? "#"}`}
                 >
                   <div
                     className="relative cursor-pointer group w-full h-[400px] rounded-[10px] overflow-hidden"

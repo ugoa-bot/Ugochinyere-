@@ -40,21 +40,41 @@ export default function Footer() {
               Contact
             </h4>
             <div className="flex gap-5">
-              <Link href="/" aria-label="Instagram">
+              <a
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
                 <Instagram size={24} color="white" />
-              </Link>
-              <Link href="https://x.com/UProjectManager" aria-label="Twitter">
+              </a>
+
+              <a
+                href="https://x.com/UProjectManager"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+              >
                 <RiTwitterXFill size={24} color="white" />
-              </Link>
-              <Link
-                href="https://www.linkedin.com/in/ugochinyereamaonyeanaso-businessprojectmanager"
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/ugochinyereamaonyeanaso-digitalprojectmanager/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="LinkedIn"
               >
                 <RxLinkedinLogo size={24} color="white" />
-              </Link>
-              <Link href="https://www.tiktok.com/@ugochinyere_amaonyeanaso" aria-label="TikTok">
+              </a>
+
+              <a
+                href="https://www.tiktok.com/@ugochinyere_amaonyeanaso"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+              >
                 <SiTiktok size={24} color="white" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>

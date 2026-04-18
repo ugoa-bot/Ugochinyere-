@@ -1,36 +1,43 @@
+// "use client";
+
 import Back from "@/app/components/ui/Back";
-import { client } from "../../../sanity/lib/client";
-import { urlFor } from "../../../sanity/lib/sanityImage";
-import { PortableText } from "@portabletext/react";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
-import { PortableTextBlock } from '@portabletext/types';
+
+import { client } from "../../../sanity/lib/client";
+import { urlFor } from "../../../sanity/lib/sanityImage";
+
+import { PortableText } from "@portabletext/react";
+import { PortableTextBlock } from "@portabletext/types";
 
 interface Project {
   _id: string;
   title: string;
-  slug: { current: string };
-  mainImage?: { asset?: { _ref?: string; url?: string } };
+  slug?: { current?: string };
+  mainImage?: { asset?: { url?: string } };
   description?: string;
   body?: PortableTextBlock[];
-  content?: string;
-} 
-
-interface PageProps {
-  params: Promise<{ 
-    slug: string;
-  }>;
+  content?: PortableTextBlock[];
 }
 
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
+
+// ✅ Safe static params (no crash on null slug)
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const projects: Project[] = await client.fetch(
     `*[_type == "project"]{ slug }`
   );
-  return projects.map((p) => ({ slug: p.slug.current }));
+
+  return projects
+    .filter((p) => p?.slug?.current)
+    .map((p) => ({ slug: p.slug!.current! }));
 }
 
 export default async function ProjectPage({ params }: PageProps) {
-  const { slug } = await params; // Await the params Promise
+  const { slug } = await params;
+
   const project: Project = await client.fetch(
     `*[_type == "project" && slug.current == $slug][0]{
       _id,
@@ -43,69 +50,88 @@ export default async function ProjectPage({ params }: PageProps) {
     { slug }
   );
 
+  // fallback (prevents crash if project not found)
+  if (!project) {
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <p className="text-lg font-medium">Project not found</p>
+      </div>
+    );
+  }
+
+  const imageUrl =
+    project?.mainImage?.asset
+      ? urlFor(project.mainImage).url()
+      : "";
+
   return (
-    <div className="w-full h-screen">
+    <div className="w-full min-h-screen bg-white">
       <Header />
-      <div className="py-2">
-        {/* Post Header */}
-        <div className=" relative">
-          <div className="w-full">
-            <Back />
-            <div
-              className="h-[50vh] sm:h-[50vh] flex flex-col"
-              style={{
-                background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${project.mainImage?.asset ? urlFor(project.mainImage).url() : ""})`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <h1 className="blog-header thai-text text-center text-4xl text-white px-5">
-                {project.title}
-              </h1>
 
-              {project.description && (
-                <p className="text-white text-center text-[16px] mt-2 max-w-5xl px-4 sm:px-6 md:px-8 mx-auto leading-relaxed">
-                  {project.description}
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
+      {/* HERO SECTION */}
+      <div className="relative">
+        <Back />
 
-        {/* Post Body */}
-        <div className="space-y-4 px-4 sm:px-8 py-6 container mx-auto text-gray-800">
-          <PortableText
-            value={Array.isArray(project.content) ? project.content : []}
-            components={{
-              block: {
-                h2: ({ children }) => (
-                  <h2 className="text-2xl font-semibold mt-6 mb-2">
-                    {children}
-                  </h2>
-                ),
-                h3: ({ children }) => (
-                  <h3 className="text-xl font-medium mt-4 mb-2">{children}</h3>
-                ),
-                normal: ({ children }) => (
-                  <p className="mt-2 leading-relaxed">{children}</p>
-                ),
-              },
-              list: {
-                bullet: ({ children }) => (
-                  <ul className="list-disc ml-6 space-y-1">{children}</ul>
-                ),
-              },
-              listItem: {
-                bullet: ({ children }) => <li>{children}</li>,
-              },
-            }}
-          />
+        <div
+          className="h-[60vh] flex flex-col items-center justify-center text-center px-4"
+          style={{
+            background: `linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.65), rgba(0,0,0,0.9)), url(${imageUrl})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight max-w-4xl">
+            {project.title}
+          </h1>
+
+          {project.description && (
+            <p className="text-white/90 mt-4 text-lg sm:text-xl max-w-2xl leading-relaxed font-medium">
+              {project.description}
+            </p>
+          )}
         </div>
       </div>
+
+      {/* CONTENT */}
+      <div className="px-4 sm:px-8 py-12 max-w-4xl mx-auto">
+        <PortableText
+          value={Array.isArray(project.content) ? project.content : []}
+          components={{
+            block: {
+              h2: ({ children }) => (
+                <h2 className="text-3xl sm:text-4xl font-extrabold mt-12 mb-4 text-gray-900 leading-tight">
+                  {children}
+                </h2>
+              ),
+              h3: ({ children }) => (
+                <h3 className="text-xl sm:text-2xl font-semibold mt-8 mb-3 text-gray-800">
+                  {children}
+                </h3>
+              ),
+              normal: ({ children }) => (
+                <p className="mt-4 text-[17px] leading-8 text-gray-700">
+                  {children}
+                </p>
+              ),
+            },
+
+            list: {
+              bullet: ({ children }) => (
+                <ul className="list-disc ml-6 mt-4 space-y-2 text-[17px] leading-7">
+                  {children}
+                </ul>
+              ),
+            },
+
+            listItem: {
+              bullet: ({ children }) => (
+                <li className="pl-1">{children}</li>
+              ),
+            },
+          }}
+        />
+      </div>
+
       <Footer />
     </div>
   );

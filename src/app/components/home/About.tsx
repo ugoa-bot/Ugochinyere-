@@ -51,10 +51,8 @@ export default function About() {
               <p className="text-[16px] md:text-[16px] lg:text-[18px] font-normal leading-[130%] text-white">
                 I&apos;m{" "}
                 <span className="text-[#FA7892]">Ugochinyere Amaonyeanaso</span>{" "},
-                I Help Business Owners, Founders & Startups Work Smarter and
-                Grow Faster.Through Agile Project Management, Automation, and
-                Process Optimization, I help streamline systems, manage
-                projects, and improve workflows.
+                You built something worth running well. I make sure it runs that way
+                on time, on budget, and without you having to do everything yourself.
               </p>
               <p className="text-[16px] md:text-[16px] lg:text-[18px] font-normal leading-[130%] text-white">
                 If your business isn&apos;t growing, there&apos;s usually a breakdown
@@ -64,6 +62,18 @@ export default function About() {
                 effectively. With the right systems in place, your business runs
                 smoother, scales faster, and performs better. Let me oil your
                 engine.
+                Does this Problems sound familiar?
+                <ul class="problem-list">
+            <li>Your projects keep running over deadline</li>
+            <li>Your team is busy but there is no thing to show for it</li>
+            <li>You're making big decisions without a clear framework</li>
+            <li>Your website is live but not bringing in clients</li>
+            <li>Your business is stagnant without structure<li>
+            <li>you're the smartest person in your business, and still the most overworked one</li>
+              <p class="problem-callout">You don't have a talent problem. You have an execution gap. That's exactly what I close.</p>
+              <p className="text-[16px] md:text-[16px] lg:text-[18px] font-normal leading-[130%] text-white">
+                I come in, understand the full picture, identify where you are losing time and money,
+                and build the systems that make your business run better than it did before I arrived.
               </p>
               <div>
                 <Link href="#contact">

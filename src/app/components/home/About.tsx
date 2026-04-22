@@ -61,6 +61,7 @@ export default function About() {
                 clear framework. Your website is live but not bringing in clients. And
                 you're the smartest person in your business, and still the most overworked one.
                 You don't have a talent problem. You have an execution gap. That's exactly what I close.
+              </p>
               <p className="text-[16px] md:text-[16px] lg:text-[18px] font-normal leading-[130%] text-white">
                 I come in, understand the full picture, identify where you are losing time and money,
                 and build the systems that make your business run better than it did before I arrived.

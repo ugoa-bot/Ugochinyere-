@@ -55,22 +55,12 @@ export default function About() {
                 on time, on budget, and without you having to do everything yourself.
               </p>
               <p className="text-[16px] md:text-[16px] lg:text-[18px] font-normal leading-[130%] text-white">
-                If your business isn&apos;t growing, there&apos;s usually a breakdown
-                behind the scenes. Inefficient operations hurt your KPIs—and
-                your ROI. I help startups, agencies, and busy professionals set
-                up clear processes, automate tasks, and manage projects
-                effectively. With the right systems in place, your business runs
-                smoother, scales faster, and performs better. Let me oil your
-                engine.
-                Does this Problems sound familiar?
-                <ul class="problem-list">
-            <li>Your projects keep running over deadline</li>
-            <li>Your team is busy but there is no thing to show for it</li>
-            <li>You're making big decisions without a clear framework</li>
-            <li>Your website is live but not bringing in clients</li>
-            <li>Your business is stagnant without structure<li>
-            <li>you're the smartest person in your business, and still the most overworked one</li>
-              <p class="problem-callout">You don't have a talent problem. You have an execution gap. That's exactly what I close.</p>
+                 Your projects keep running over deadline. Your business is stagnant without structure.
+                Your team is busy but there is no thing to show for it.
+                You're making big decisions without a
+                clear framework. Your website is live but not bringing in clients. And
+                you're the smartest person in your business, and still the most overworked one.
+                You don't have a talent problem. You have an execution gap. That's exactly what I close.
               <p className="text-[16px] md:text-[16px] lg:text-[18px] font-normal leading-[130%] text-white">
                 I come in, understand the full picture, identify where you are losing time and money,
                 and build the systems that make your business run better than it did before I arrived.
